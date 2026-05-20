@@ -13,9 +13,9 @@
             <aside class=" w-60 bg-blue-950 text-white ">
                 <h2 class=" text-2xl font-semibold my-5 ml-7 ">Budget Tracker</h2>
                 <ul class=" mx-7 mt-10">
-                    <li><a class=" {{ request()->routeIs('dashboard') ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-500/50 hover:text-white" }} text-sm font-semibold block mb-1 py-2.5 pl-2 rounded-sm" href="{{ route('dashboard') }}"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-                    <li><a class=" {{ request()->routeIs('transactions.*') ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-500/50 hover:text-white" }} text-sm font-semibold block mb-1 py-2.5 pl-2 rounded-sm" href="{{ route('transactions.index') }}"><i class="fa-solid fa-receipt"></i> Transactions</a></li>
-                    <li><a class=" {{ request()->routeIs('profile') ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-500/50 hover:text-white" }} text-sm font-semibold block mb-1 py-2.5 pl-2 rounded-sm" href=""><i class="fa-solid fa-user"></i> Profile</a></li>
+                    <li><a class=" {{ request()->routeIs('dashboard') ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-500/50 hover:text-white" }} text-sm font-semibold block mb-1 py-2.5 pl-2 rounded-sm" href="{{ route('dashboard') }}"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+                    <li><a class=" {{ request()->routeIs('transactions.*') ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-500/50 hover:text-white" }} text-sm font-semibold block mb-1 py-2.5 pl-2 rounded-sm" href="{{ route('transactions.index') }}"><i class="fa-solid fa-receipt"></i> <span>Transactions</span></a></li>
+                    <li><a class=" {{ request()->routeIs('profile') ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-gray-500/50 hover:text-white" }} text-sm font-semibold block mb-1 py-2.5 pl-2 rounded-sm" href=""><i class="fa-solid fa-user"></i> <span>Profile</span></a></li>
                 </ul>
             </aside>
             <div class=" flex-1 h-screen flex flex-col">
