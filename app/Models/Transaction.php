@@ -26,6 +26,7 @@ class Transaction extends Model
         return [
             'amount' => 'decimal:2',
             'type' => TransactionType::class,
+            'date' => 'datetime:Y-m-d H:i:s',
         ];
     }
 
