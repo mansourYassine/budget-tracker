@@ -9,6 +9,7 @@ let rightPageSide = document.querySelector(".right-page");
 sidebarToggleBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (!sidebar.hasAttribute("collapsed")) {
+        // Collapse the sidebar
         textLogo.classList.add("hidden");
         logo.classList.replace("hidden", "inline-block");
         sidebar.classList.replace("w-60", "w-16");
@@ -19,6 +20,7 @@ sidebarToggleBtn.addEventListener("click", (e) => {
             rightPageSide.classList.replace("md:ml-60", "md:ml-16");
         }
     } else {
+        // Extend the sidebar
         sidebar.removeAttribute("collapsed");
         textLogo.classList.remove("hidden");
         logo.classList.replace("inline-block", "hidden");
