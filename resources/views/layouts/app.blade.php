@@ -8,9 +8,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <aside class=" fixed top-0 left-0 bottom-0 z-20 w-60 bg-blue-950 text-white flex flex-col ">
+        <aside class=" fixed top-0 left-0 bottom-0 z-20 w-60 bg-blue-950 text-white flex flex-col duration-150 ease-in-out ">
             <div class="my-5 mx-6">
-                <h2 class=" text-logo text-2xl font-semibold ">Budget Tracker</h2>
+                <h2 class=" text-logo text-2xl font-semibold text-nowrap ">Budget Tracker</h2>
                 <span class=" logo text-1xl font-bold h-8 hidden ">BT</span>
             </div>
             <ul class=" mx-4 mt-2 h-full flex flex-col">
@@ -25,6 +25,7 @@
                 <h2 class=" text-secondary text-2xl font-bold ml-5 ">@yield('title')</h2>
             </header>
             <main class=" flex flex-1 justify-center bg-backgr ">
+                @yield('content')
             </main>
         </div>
     </body>
