@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class=" h-screen flex flex-col">
-            <header class=" py-4.5 bg-white shadow-xs z-10 ">
+            <header class=" py-4.5 bg-white shadow-sm z-10 ">
                 <h2 class=" text-secondary text-2xl font-bold text-center ">Budget Tracker</h2>
             </header>
             <main class=" flex flex-1 justify-center bg-backgr ">
