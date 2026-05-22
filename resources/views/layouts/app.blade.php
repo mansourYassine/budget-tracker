@@ -24,7 +24,7 @@
             <header class=" py-4.5 bg-white shadow-xs z-10 ">
                 <h2 class=" text-secondary text-2xl font-bold ml-5 ">@yield('title')</h2>
             </header>
-            <main class=" flex flex-1 justify-center bg-backgr ">
+            <main class=" flex-1 bg-backgr ">
                 @yield('content')
             </main>
         </div>
