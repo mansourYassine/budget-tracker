@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->decimal('amount');
             $table->enum('type', ['income', 'expense']);
-            $table->text('notes');
+            $table->text('notes')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->dateTime('date');
             $table->timestamps();
