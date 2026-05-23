@@ -1,6 +1,6 @@
 <x-layouts.guest>
     <h2 class=" font-bold text-2xl ">Create Account</h2>
-    <form action="{{ route('register.post') }}" method="post" class="mt-5" novalidate>
+    <form action="{{ route('register.post') }}" method="post" class="mt-5">
         <div class=" flex flex-col mb-4">
             <x-forms.input-label for="form-name" :value="__('FULL NAME')" />
             <x-forms.text-input type="text" name="name" id="form-name" placeholder="John Doe" :value="old('name')" required />
