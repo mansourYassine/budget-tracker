@@ -1,6 +1,6 @@
 <x-layouts.guest>
     <h2 class=" font-bold text-2xl ">Create Account</h2>
-    <form action="/register" method="post" class="mt-5">
+    <form action="{{ route('register.post') }}" method="post" class="mt-5">
         <div class=" flex flex-col mb-4">
             <label for="form-name" class=" text-sm font-medium text-gray-600 mb-2.5 ">FULL NAME</label>
             <input type="text" name="name" id="form-name" placeholder="John Doe" value="{{ old('name') }}" class=" @error('name') is-invalid @enderror border border-gray-300 bg-backgr rounded-md h-9 focus:border-blue-500 focus:outline-none pl-3">
