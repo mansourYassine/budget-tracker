@@ -20,7 +20,8 @@ class TransactionController extends Controller
      */
     public function index() : View
     {
-        return view("transactions.index");
+        $transactions = Transaction::whereUserId($this->userId)->get();
+        return view("transactions.index", ['transactions' => $transactions]);
     }
 
     /**
