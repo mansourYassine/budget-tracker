@@ -1,12 +1,4 @@
-@extends('layouts.guest')
-
-@section('title', 'Register')
-
-@push('scripts')
-    @vite('resources/js/pages/register.js')
-@endpush
-
-@section('content')
+<x-layouts.guest>
     <h2 class=" font-bold text-2xl ">Create Account</h2>
     <form action="/register" method="post" class="mt-5">
         <div class=" flex flex-col mb-4">
@@ -32,4 +24,7 @@
         </div>
         <button type="submit" class=" bg-secondary text-white font-medium px-5 py-3 rounded-md w-full mt-3 cursor-pointer">Create Account</button>
     </form>
-@endsection
+    @push('scripts')
+        @vite('resources/js/pages/register.js')
+    @endpush
+</x-layouts.guest>
