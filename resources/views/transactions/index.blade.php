@@ -34,5 +34,18 @@
                 </select>
             </div>
         </div>
+        <table class=" rounded-2xl overflow-hidden my-7">
+            <thead class=" bg-blue-200 text-gray-500">
+                <tr class=" flex">
+                    <th class=" flex-2 text-lg">Due Date</th>
+                    <th class=" flex-3 text-lg">Title</th>
+                    <th class=" flex-2 text-lg">Income</th>
+                    <th class=" flex-2 text-lg">Expense</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
     </div>
 @endsection
