@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>@yield('title')</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name', 'Laravel') }}</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @stack('scripts')
     </head>
     <body>
         <aside collapsed class=" fixed top-0 left-0 bottom-0 z-20 w-16 bg-blue-950 text-white flex flex-col duration-150 ease-in-out ">
@@ -23,11 +23,12 @@
         </aside>
         <div class=" right-page h-screen flex flex-col ml-16 md:ml-16">
             <header class=" py-4.5 bg-white shadow-sm z-10 ">
-                <h2 class=" text-secondary text-2xl font-bold ml-5 ">@yield('title')</h2>
+                <h2 class=" text-secondary text-2xl font-bold ml-5 ">{{ $title }}</h2>
             </header>
             <main class=" flex-1 bg-backgr ">
-                @yield('content')
+                {{ $slot }}
             </main>
         </div>
+        @stack('scripts')
     </body>
 </html>
