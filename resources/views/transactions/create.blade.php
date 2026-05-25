@@ -4,6 +4,7 @@
         <div class=" bg-white shadow-sm/20 mt-6 rounded-md h-fit w-5/6 md:w-1/2 xl:w-1/3 px-4 md:px-12 py-4 md:py-8 ">
             <h2 class=" font-bold text-2xl ">Create New Transaction</h2>
             <form action="{{ route('transactions.store') }}" method="post" class="mt-5">
+                @csrf
                 {{-- Title --}}
                 <div class=" flex flex-col mb-4">
                     <x-forms.input-label for="title" :value="__('TITLE')" />
