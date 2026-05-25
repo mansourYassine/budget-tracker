@@ -1,16 +1,5 @@
-@extends('layouts.app')
-
-@section('title', 'Transactions')
-
-<script>
-    let transactions = @json($transactions);
-</script>
-
-@push('scripts')
-    @vite('resources/js/pages/transactions.index.js')
-@endpush
-
-@section('content')
+<x-layouts.app>
+    <x-slot:title>Transactions</x-slot:title>
     <div class=" flex flex-col px-5 pt-5">
         <div class="bg-white shadow-md/5 rounded-2xl w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-5 lg:gap-18 py-10">
             <div class="relative">
@@ -35,4 +24,11 @@
             </div>
         </div>
     </div>
-@endsection
+    {{-- Uncomment it when creating the show method in the transaction controller --}}
+    @push('scripts')
+        {{-- <script>
+            let transactions = @json($transactions);
+        </script>
+        @vite('resources/js/pages/transactions.index.js') --}}
+    @endpush
+</x-layouts.app>
