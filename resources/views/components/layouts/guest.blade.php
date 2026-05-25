@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>@yield('title')</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @stack('scripts')
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name', 'Laravel') }}</title>
+        @vite(['resources/css/app.css'])
     </head>
     <body>
         <div class=" h-screen flex flex-col">
@@ -15,9 +15,10 @@
             </header>
             <main class=" flex flex-1 justify-center bg-backgr ">
                 <div class=" bg-white shadow-sm/20 mt-6 rounded-md h-fit w-5/6 md:w-1/2 xl:w-1/3 px-12 py-8 ">
-                    @yield('content')
+                    {{ $slot }}
                 </div>
             </main>
         </div>
+        @stack('scripts')
     </body>
 </html>
