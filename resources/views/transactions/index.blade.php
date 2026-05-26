@@ -23,25 +23,70 @@
                 </select>
             </div>
         </div>
-        <table class=" rounded-2xl overflow-hidden my-7">
-            <thead class=" bg-blue-200 text-gray-500">
-                <tr class=" flex">
-                    <th class=" flex-2 text-lg">Due Date</th>
-                    <th class=" flex-3 text-lg">Title</th>
-                    <th class=" flex-2 text-lg">Income</th>
-                    <th class=" flex-2 text-lg">Expense</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+        <div class=" overflow-x-auto w-full">
+            <table class=" w-full rounded-sm overflow-hidden my-7 px-4 bg-white shadow-md/5 ">
+                <thead class=" bg-blue-200 text-gray-500">
+                    <tr class=" text-left *:p-4">
+                        <th class=" min-w-35">Date</th>
+                        <th class=" min-w-50">Title</th>
+                        <th class=" min-w-29">Income</th>
+                        <th class=" min-w-29">Expense</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
-    {{-- Uncomment it when creating the show method in the transaction controller --}}
     @push('scripts')
-        {{-- <script>
+        <script>
             let transactions = @json($transactions);
+
+            render();
+            
+            // Render transactions from the array
+            function render() {
+                let tbody = document.querySelector('table > tbody');
+                for (let transaction of transactions) {
+                    // Create a row
+                    let row = document.createElement('tr');
+                    row.classList.add("text-lg", '*:p-5', 'not-last:border-b', 'not-last:border-gray-500/25');
+
+                    // Create a cells
+                    // Date:
+                    let date = document.createElement('td');
+                    // Title
+                    let title = document.createElement('td');
+                    title.classList.add('font-semibold', 'text-gray-700');
+                    // Income
+                    let income = document.createElement('td');
+                    income.classList.add('font-semibold', 'text-xl', 'text-green-600');
+                    // Expense
+                    let expense = document.createElement('td');
+                    expense.classList.add('font-semibold', 'text-xl', 'text-red-600');
+
+                    // Fill in each cell with the correspond transaction date 
+                    // Date
+                    let formatedDate = transaction.date.slice(0, 16);
+                    date.textContent = formatedDate;
+                    // Title
+                    title.textContent = transaction.title;
+                    // Amount
+                    if (transaction.type === "income") {
+                        income.textContent = transaction.amount;
+                    } else {
+                        expense.textContent = transaction.amount;
+                    }
+
+                    row.appendChild(date);
+                    row.appendChild(title);
+                    row.appendChild(income);
+                    row.appendChild(expense);
+
+                    tbody.appendChild(row);
+                }
+            }
         </script>
-        @vite('resources/js/pages/transactions.index.js') --}}
     @endpush
 </x-layouts.app>
