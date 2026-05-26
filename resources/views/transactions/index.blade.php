@@ -43,11 +43,12 @@
         <script>
             let transactions = @json($transactions);
 
-            render();
+            render(transactions);
             
             // Render transactions from the array
-            function render() {
+            function render(transactions) {
                 let tbody = document.querySelector('table > tbody');
+                tbody.innerHTML = "";
                 for (let transaction of transactions) {
                     // Create a row
                     let row = document.createElement('tr');
@@ -87,6 +88,19 @@
                     tbody.appendChild(row);
                 }
             }
+
+            // Search for transactions
+            let searchTransactions = document.getElementById('search-transactions');
+            searchTransactions.addEventListener('keyup', (e) => {
+                let filterdTransactions = [];
+                transactions.forEach(tran => {
+                    let title = tran.title.toLowerCase();
+                    if (title.includes(searchTransactions.value)) {
+                        filterdTransactions.push(tran);
+                    }
+                });
+                render(filterdTransactions);
+            });
         </script>
     @endpush
 </x-layouts.app>
