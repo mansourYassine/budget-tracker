@@ -17,6 +17,7 @@
             <div class="flex items-center gap-3">
                 <label class="text-lg">Due:</label>
                 <select name="type" id="transactions-date" class=" border border-gray-400 bg-backgr rounded-md h-11.5 pl-2 focus:outline-none w-30">
+                    <option value="all" selected>All</option>
                     <option value="today">Today</option>
                     <option value="week">Week</option>
                     <option value="month">Month</option>
@@ -42,6 +43,7 @@
     @push('scripts')
         <script>
             let transactions = @json($transactions);
+            sortTransactions(transactions);
 
             render(transactions);
             
@@ -87,6 +89,25 @@
 
                     tbody.appendChild(row);
                 }
+            }
+
+            // Sort Transactions
+            function sortTransactions(transactions) {
+                let changeHappend = false;
+                do {
+                    changeHappend = false;
+                    for (let i = 0; i < transactions.length - 1; i++) {
+                        let currentDate = new Date(transactions[i].date);
+                        let nextDate = new Date(transactions[i + 1].date);
+
+                        if (nextDate > currentDate) {
+                            let container = transactions[i];
+                            transactions[i] = transactions[i + 1];
+                            transactions[i + 1] = container;
+                            changeHappend = true;
+                        }
+                    }
+                } while (changeHappend === true);
             }
 
             // Search for transactions
