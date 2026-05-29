@@ -92,14 +92,16 @@
             // Search for transactions
             let searchTransactions = document.getElementById('search-transactions');
             searchTransactions.addEventListener('keyup', (e) => {
-                let filterdTransactions = [];
-                transactions.forEach(tran => {
-                    let title = tran.title.toLowerCase();
-                    if (title.includes(searchTransactions.value)) {
-                        filterdTransactions.push(tran);
-                    }
-                });
-                render(filterdTransactions);
+                if (searchTransactions.length !== 0) {
+                    let filterdTransactions = [];
+                    transactions.forEach(tran => {
+                        let title = tran.title.toLowerCase();
+                        if (title.includes(searchTransactions.value.toLowerCase())) {
+                            filterdTransactions.push(tran);
+                        }
+                    });
+                    render(filterdTransactions);
+                }
             });
         </script>
     @endpush
