@@ -14,7 +14,7 @@
                 {{-- Amount --}}
                 <div class=" flex flex-col mb-4">
                     <x-forms.input-label for="amount" :value="__('AMOUNT')" />
-                    <x-forms.text-input type="number" name="amount" id="amount" placeholder="Ex: 156" :value="old('amount')" min="0" required />
+                    <x-forms.text-input type="number" name="amount" id="amount" placeholder="Ex: 156" :value="old('amount')" min="0" step="0.01" required />
                     <x-forms.input-error :messages="$errors->get('amount')" />
                 </div>
                 {{-- Type --}}
