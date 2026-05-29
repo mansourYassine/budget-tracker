@@ -103,6 +103,23 @@
                     render(filterdTransactions);
                 }
             });
+
+            // Filter transactions by type
+            let transactionsType = document.getElementById('transactions-type');
+            transactionsType.addEventListener('change', (e) => {
+                let choosenType = e.target.value;
+                if (choosenType !== 'all') {
+                    let filterdTransactions = [];
+                    transactions.forEach(tran => {
+                        if (tran.type === choosenType) {
+                            filterdTransactions.push(tran);
+                        }
+                    });
+                    render(filterdTransactions);
+                } else {
+                    render(transactions);
+                }
+            });
         </script>
     @endpush
 </x-layouts.app>
