@@ -1,3 +1,7 @@
+import { startOfISOWeek, endOfISOWeek } from 'date-fns';
+window.startOfISOWeek = startOfISOWeek;
+window.endOfISOWeek = endOfISOWeek;
+
 let sidebar = document.querySelector("aside");
 let sidebarToggleBtn = document.querySelector("li.sidebar-toggle");
 let sidebarToggleBtnArrowIcon = document.querySelector("li.sidebar-toggle i");
