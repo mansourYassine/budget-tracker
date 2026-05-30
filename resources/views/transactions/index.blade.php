@@ -141,6 +141,51 @@
                     render(transactions);
                 }
             });
+
+            // Filter transactions by date
+            let transactionsDate = document.getElementById('transactions-date');
+            transactionsDate.addEventListener('change', (e) => {
+                let choosenDate = e.target.value;
+                if (choosenDate !== 'all') {
+                    let filterdTransactions = [];
+                    let today = new Date();
+                    transactions.forEach(tran => {
+                        let transactionDate = new Date(tran.date);
+                        let diff = Math.abs(today - transactionDate);
+
+                        let diffDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        
+                        switch (choosenDate) {
+                            case 'today':
+                                if (diffDays >= 0 && diffDays < 2 && transactionDate.getDay() === today.getDay()) {
+                                    filterdTransactions.push(tran);
+                                }
+                                break;
+                            case 'week':
+                                if (diffDays >= 0 && diffDays <= 6) {
+                                    let startWeek = startOfISOWeek(today);
+                                    let endWeek = endOfISOWeek(today);
+                                    if (transactionDate >= startWeek && transactionDate <= endWeek) {
+                                        filterdTransactions.push(tran);
+                                    }
+                                }
+                                break;
+                            case 'month':
+                                if (diffDays >= 0 && diffDays < 32 && transactionDate.getMonth() === today.getMonth() && transactionDate.getFullYear() === today.getFullYear()) {
+                                    filterdTransactions.push(tran);
+                                }
+                                break;
+                        
+                            default:
+                                
+                                break;
+                        }
+                    });
+                    render(filterdTransactions);
+                } else {
+                    render(transactions);
+                }
+            });
         </script>
     @endpush
 </x-layouts.app>
