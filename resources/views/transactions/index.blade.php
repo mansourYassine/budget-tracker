@@ -32,6 +32,7 @@
                         <th class=" min-w-50">Title</th>
                         <th class=" min-w-29">Income</th>
                         <th class=" min-w-29">Expense</th>
+                        <th class=" min-w-25">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,6 +69,8 @@
                     // Expense
                     let expense = document.createElement('td');
                     expense.classList.add('font-semibold', 'text-xl', 'text-red-600');
+                    // Edit Button
+                    let editBtn = document.createElement('td');
 
                     // Fill in each cell with the correspond transaction date 
                     // Date
@@ -81,11 +84,16 @@
                     } else {
                         expense.textContent = transaction.amount;
                     }
+                    // Edit Button
+                    editBtn.innerHTML = `
+                        <a href="/transactions/${transaction.id}/edit" class="bg-green-700 text-white font-medium px-4 py-2 rounded-md mt-3">Edit</a>
+                    `;
 
                     row.appendChild(date);
                     row.appendChild(title);
                     row.appendChild(income);
                     row.appendChild(expense);
+                    row.appendChild(editBtn);
 
                     tbody.appendChild(row);
                 }
