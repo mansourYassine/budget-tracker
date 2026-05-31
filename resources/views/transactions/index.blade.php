@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot:title>Transactions</x-slot:title>
-    <div class=" flex flex-col px-5 pt-5">
+    <div class=" flex flex-col px-5 pt-5 gap-3">
         <div class="bg-white shadow-md/5 rounded-2xl w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-5 lg:gap-18 py-10">
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute top-[50%] translate-y-[-50%] left-2 text-gray-500"></i>
@@ -24,8 +24,9 @@
                 </select>
             </div>
         </div>
+        <a href="{{ route('transactions.create') }}" class=" bg-secondary text-white text-center border border-gray-300 shadow-md/5 font-semibold px-3 py-2.5 md:px-5 md:py-3 rounded-md self-end">Create Transaction</a>
         <div class=" overflow-x-auto w-full">
-            <table class=" w-full rounded-sm overflow-hidden my-7 px-4 bg-white shadow-md/5 ">
+            <table class=" w-full rounded-sm overflow-hidden mb-7 px-4 bg-white shadow-md/5 ">
                 <thead class=" bg-blue-200 text-gray-500">
                     <tr class=" text-left *:p-4">
                         <th class=" min-w-35">Date</th>
