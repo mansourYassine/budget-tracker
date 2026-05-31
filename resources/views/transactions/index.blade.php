@@ -87,7 +87,7 @@
                     }
                     // Edit Button
                     editBtn.innerHTML = `
-                        <a href="/transactions/${transaction.id}/edit" class="bg-green-700 text-white font-medium px-4 py-2 rounded-md mt-3">Edit</a>
+                        <a href="/transactions/${transaction.id}/edit" class="bg-cyan-600 text-white font-medium px-4 py-2 rounded-md mt-3">Edit</a>
                     `;
 
                     row.appendChild(date);
