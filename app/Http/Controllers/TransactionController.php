@@ -54,14 +54,6 @@ class TransactionController extends Controller
     }
 
     /**
-     * Display the specified transaction.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified transaction.
      */
     public function edit(string $id)
