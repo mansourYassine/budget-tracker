@@ -58,15 +58,36 @@ class TransactionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $transaction = Transaction::find($id);
+        return view('transactions.edit', ['transaction' => $transaction]);
     }
 
     /**
      * Update the specified transaction in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id) : RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'title' => ['required'],
+            'amount' => ['required', 'gt:0'],
+            'type' => ['required', Rule::enum(TransactionType::class)],
+            'date' => ['date', 'nullable'],
+            'notes' => ['string', 'nullable'],
+        ]);
+
+        $validated['date'] = $validated['date'] ?? now();
+
+        $transaction = Transaction::find($id);
+
+        $transaction->title = $validated['title'];
+        $transaction->amount = $validated['amount'];
+        $transaction->type = $validated['type'];
+        $transaction->date = $validated['date'];
+        $transaction->notes = $validated['notes'];
+
+        $transaction->save();
+
+        return redirect('/transactions');
     }
 
     /**
