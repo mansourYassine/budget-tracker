@@ -3,7 +3,7 @@
     <div class=" flex justify-center">
         <div class=" bg-white shadow-sm/20 mt-6 rounded-md h-fit w-5/6 md:w-1/2 xl:w-1/3 px-4 md:px-12 py-4 md:py-8 ">
             <h2 class=" font-bold text-2xl text-center sm:text-left ">Edit Transaction</h2>
-            <form action="{{ route('transactions.update', ['id' => $transaction->id]) }}" method="post" class="mt-5" novalidate>
+            <form id="edit-form" action="{{ route('transactions.update', ['id' => $transaction->id]) }}" method="post" class="mt-5" novalidate>
                 @csrf
                 @method('PUT')
                 {{-- Title --}}
@@ -56,12 +56,28 @@
                     <label for="notes" class=" text-sm font-medium text-gray-600 mb-2.5 ">NOTES</label>
                     <textarea name="notes" id="notes" rows="3" placeholder="Describe this transaction..." class="border border-gray-300 bg-backgr rounded-md focus:border-blue-500 focus:outline-none pl-3 pt-1.5">{{ old('notes') ?? $transaction->notes }}</textarea>
                 </div>
-                {{-- Save and cancel --}}
-                <div class="flex gap-4">
-                    <x-forms.button class="w-full">Save</x-forms.button>
-                    <x-forms.anchor-button href="{{ route('transactions.index') }}">Cancel</x-forms.anchor-button>
-                </div>
             </form>
+            <form id="delete-form" action="{{ route('transactions.destroy', $transaction->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+            </form>
+            {{-- Save Changes and Delete --}}
+            <div class="flex gap-4 pt-2">
+                <x-forms.button form="edit-form" class="w-full">Save</x-forms.button>
+                <button form="delete-form" type="submit" class="text-center bg-gray-50 hover:bg-red-500/95 border border-red-300 text-red-600 hover:text-white duration-150 font-semibold px-5 py-3 rounded-md w-full cursor-pointer">Delete</button>
+            </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            let deleteForm = document.getElementById('delete-form');
+            deleteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isConfirm = confirm('Are you sure you want to delete this transaction?');
+                if (isConfirm) {
+                    deleteForm.submit();
+                }
+            })
+        </script>
+    @endpush
 </x-layouts.app>

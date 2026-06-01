@@ -93,8 +93,11 @@ class TransactionController extends Controller
     /**
      * Remove the specified transaction from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : RedirectResponse
     {
-        //
+        $transaction = Transaction::find($id);
+        $transaction->delete();
+
+        return redirect('/transactions');
     }
 }
