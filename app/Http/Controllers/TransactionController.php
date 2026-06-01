@@ -20,7 +20,8 @@ class TransactionController extends Controller
      */
     public function index() : View
     {
-        return view("transactions.index");
+        $transactions = Transaction::whereUserId($this->userId)->get();
+        return view("transactions.index", ['transactions' => $transactions]);
     }
 
     /**
@@ -53,34 +54,50 @@ class TransactionController extends Controller
     }
 
     /**
-     * Display the specified transaction.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified transaction.
      */
     public function edit(string $id)
     {
-        //
+        $transaction = Transaction::find($id);
+        return view('transactions.edit', ['transaction' => $transaction]);
     }
 
     /**
      * Update the specified transaction in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id) : RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'title' => ['required'],
+            'amount' => ['required', 'gt:0'],
+            'type' => ['required', Rule::enum(TransactionType::class)],
+            'date' => ['date', 'nullable'],
+            'notes' => ['string', 'nullable'],
+        ]);
+
+        $validated['date'] = $validated['date'] ?? now();
+
+        $transaction = Transaction::find($id);
+
+        $transaction->title = $validated['title'];
+        $transaction->amount = $validated['amount'];
+        $transaction->type = $validated['type'];
+        $transaction->date = $validated['date'];
+        $transaction->notes = $validated['notes'];
+
+        $transaction->save();
+
+        return redirect('/transactions');
     }
 
     /**
      * Remove the specified transaction from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : RedirectResponse
     {
-        //
+        $transaction = Transaction::find($id);
+        $transaction->delete();
+
+        return redirect('/transactions');
     }
 }

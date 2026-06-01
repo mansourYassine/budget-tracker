@@ -2,8 +2,9 @@
     <x-slot:title>New Transaction</x-slot:title>
     <div class=" flex justify-center">
         <div class=" bg-white shadow-sm/20 mt-6 rounded-md h-fit w-5/6 md:w-1/2 xl:w-1/3 px-4 md:px-12 py-4 md:py-8 ">
-            <h2 class=" font-bold text-2xl ">Create New Transaction</h2>
+            <h2 class=" font-bold text-2xl text-center sm:text-left ">Create New Transaction</h2>
             <form action="{{ route('transactions.store') }}" method="post" class="mt-5">
+                @csrf
                 {{-- Title --}}
                 <div class=" flex flex-col mb-4">
                     <x-forms.input-label for="title" :value="__('TITLE')" />
@@ -13,7 +14,7 @@
                 {{-- Amount --}}
                 <div class=" flex flex-col mb-4">
                     <x-forms.input-label for="amount" :value="__('AMOUNT')" />
-                    <x-forms.text-input type="number" name="amount" id="amount" placeholder="Ex: 156" :value="old('amount')" min="0" required />
+                    <x-forms.text-input type="number" name="amount" id="amount" placeholder="Ex: 156" :value="old('amount')" min="0" step="0.01" required />
                     <x-forms.input-error :messages="$errors->get('amount')" />
                 </div>
                 {{-- Type --}}
@@ -45,7 +46,7 @@
                 </div>
                 {{-- Save and cancel --}}
                 <div class="flex gap-4">
-                    <x-forms.button class="w-full">Save</x-forms.button>
+                    <x-forms.button class="w-full mt-3">Save</x-forms.button>
                     <x-forms.anchor-button href="{{ route('transactions.index') }}">Cancel</x-forms.anchor-button>
                 </div>
             </form>
