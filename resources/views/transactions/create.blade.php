@@ -46,7 +46,7 @@
                 </div>
                 {{-- Save and cancel --}}
                 <div class="flex gap-4">
-                    <x-forms.button class="w-full">Save</x-forms.button>
+                    <x-forms.button class="w-full mt-3">Save</x-forms.button>
                     <x-forms.anchor-button href="{{ route('transactions.index') }}">Cancel</x-forms.anchor-button>
                 </div>
             </form>
